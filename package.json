@@ -33,7 +33,8 @@
     "fieldTypes": [
       "string",
       "text",
-      "seo"
+      "seo",
+      "slug"
     ],
     "parameters": {
       "global": [
