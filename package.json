@@ -63,6 +63,13 @@
           "hint": "Secret to append to preview link query parameter, leave blank if none is needed"
         },
         {
+          "id": "useDefaultLang",
+          "label": "Use default lang in path",
+          "type": "boolean",
+          "default": false,
+          "hint": "Adds the locale code to path if there is only one locale"
+        },
+        {
           "id": "developmentMode",
           "label": "Development mode",
           "type": "boolean",
