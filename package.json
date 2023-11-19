@@ -1,6 +1,6 @@
 {
   "name": "datocms-plugin-nextjs-multilang-preview",
-  "homepage": "https://github.com/tiacop/datocms-plugin-nextjs-preview",
+  "homepage": "https://github.com/rrirrirr/datocms-plugin-nextjs-preview",
   "version": "0.1.6",
   "description": "Plugin that provides links to preview content in Next.js for use in multilingual datoCMS projects.",
   "main": "index.js",
@@ -22,7 +22,7 @@
     "dist",
     "docs"
   ],
-  "author": "Thomas Iacopino <thomas.iacopino@eurac.edu>",
+  "author": "Carl-Oscar Pihl",
   "license": "ISC",
   "datoCmsPlugin": {
     "title": "Next.js Multilang Preview Links",
