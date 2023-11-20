@@ -108,7 +108,7 @@ export default class Main extends Component {
     }
 
     const defaultLang = useDefaultLang
-      ? `/${plugin.site.attributes.locales[0]}`
+      ? `${plugin.site.attributes.locales[0]}`
       : "";
     let multiLang = false;
 
@@ -120,11 +120,13 @@ export default class Main extends Component {
     const noSlashInstanceUrl = instanceUrl.replace(/\/$/, "");
 
     const previewHref = `${noSlashInstanceUrl}${previewPath}/${
-      multiLang ? `/${locale}` : defaultLang
-    }${path}?${previewSecret ? `&secret=${previewSecret}` : ""}`;
-    const liveHref = `${noSlashInstanceUrl}${
-      multiLang ? `/${locale}` : defaultLang
+      multiLang ? `${locale}` : defaultLang
+    }${path}?${previewSecret ? `secret=${previewSecret}` : ""}`;
+    const liveHref = `${noSlashInstanceUrl}/${
+      multiLang ? `${locale}` : defaultLang
     }${path}`;
+
+    const disableHref = `${noSlashInstanceUrl}${previewPath}/disable`;
 
     return (
       <>
@@ -136,7 +138,16 @@ export default class Main extends Component {
             href={previewHref}
             style={{ backgroundColor: accentColor }}
           >
-            Preview
+            Turn on preview mode
+          </a>
+          <a
+            className="primary"
+            target="_blank"
+            rel="noopener noreferrer"
+            href={disableHref}
+            style={{ borderColor: accentColor, color: accentColor }}
+          >
+            Disable preview mode
           </a>
           <a
             className="secondary"
@@ -145,7 +156,7 @@ export default class Main extends Component {
             href={liveHref}
             style={{ borderColor: accentColor, color: accentColor }}
           >
-            View published
+            View
           </a>
         </div>
       </>
