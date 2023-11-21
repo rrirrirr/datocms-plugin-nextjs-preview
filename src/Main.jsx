@@ -136,16 +136,16 @@ export default class Main extends Component {
             target="_blank"
             rel="noopener noreferrer"
             href={previewHref}
-            style={{ backgroundColor: accentColor }}
+            style={{ backgroundColor: "#472365" }}
           >
-            Turn on preview mode
+            Enable preview mode
           </a>
           <a
             className="primary"
             target="_blank"
             rel="noopener noreferrer"
             href={disableHref}
-            style={{ borderColor: accentColor, color: accentColor }}
+            style={{ backgroundColor: "#354008" }}
           >
             Disable preview mode
           </a>
@@ -154,7 +154,7 @@ export default class Main extends Component {
             target="_blank"
             rel="noopener noreferrer"
             href={liveHref}
-            style={{ borderColor: accentColor, color: accentColor }}
+            style={{ borderColor: accentColor, color: "A38018" }}
           >
             View
           </a>
