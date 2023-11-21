@@ -140,7 +140,7 @@ export default class Main extends Component {
             href={previewHref}
             style={{ backgroundColor: '#472365' }}
           >
-            Enable preview mode
+            Enable draft preview mode
           </a>
           <a
             className="primary"
@@ -149,7 +149,7 @@ export default class Main extends Component {
             href={disableHref}
             style={{ backgroundColor: '#354008' }}
           >
-            Disable preview mode
+            Disable draft preview mode
           </a>
           <a
             className="secondary"
