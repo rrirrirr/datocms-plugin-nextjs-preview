@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-import connectToDatoCms from "./connectToDatoCms";
-import "./style.scss";
+import connectToDatoCms from './connectToDatoCms';
+import './style.scss';
 
 const replacementFieldRegex = /\$[a-zA-Z_]+/g;
 
-@connectToDatoCms((plugin) => ({
+@connectToDatoCms(plugin => ({
   developmentMode: plugin.parameters.global.developmentMode,
   fieldValue: plugin.getFieldValue(plugin.fieldPath),
   plugin,
@@ -30,7 +30,7 @@ export default class Main extends Component {
     const matches = this.getPathReplacementFields();
     const { locale } = plugin;
 
-    this.unsubscribeLocale = plugin.addChangeListener("locale", (value) => {
+    this.unsubscribeLocale = plugin.addChangeListener('locale', (value) => {
       this.setState({ locale: value });
     });
 
@@ -43,14 +43,14 @@ export default class Main extends Component {
         fields[m] = plugin.getFieldValue(m, locale);
         this.unsubscribers.push(
           plugin.addFieldChangeListener(m, () => {
-            this.setState((s) => ({
+            this.setState(s => ({
               ...s,
               fields: {
                 ...s,
                 [m]: plugin.getFieldValue(m, locale),
               },
             }));
-          })
+          }),
         );
       });
 
@@ -63,7 +63,7 @@ export default class Main extends Component {
 
   componentWillUnmount() {
     if (this.unsubscribers) {
-      this.unsubscribers.forEach((unsub) => unsub());
+      this.unsubscribers.forEach(unsub => unsub());
       this.unsubscribeLocale();
     }
   }
@@ -71,9 +71,9 @@ export default class Main extends Component {
   getPathReplacementFields() {
     // eslint-disable-next-line react/destructuring-assignment
     const matches = this.props.plugin.parameters.instance.entityPath.match(
-      replacementFieldRegex
+      replacementFieldRegex,
     );
-    return matches && matches.map((m) => m.replace("$", ""));
+    return matches && matches.map(m => m.replace('$', ''));
   }
 
   getEntityPath() {
@@ -93,13 +93,15 @@ export default class Main extends Component {
     const { accentColor } = plugin.theme;
     const {
       parameters: {
-        global: { instanceUrl, previewPath, previewSecret, useDefaultLang },
+        global: {
+          instanceUrl, previewPath, previewSecret, useDefaultLang,
+        },
       },
     } = plugin;
 
     const { locale } = this.state;
 
-    if (plugin.itemStatus === "new") {
+    if (plugin.itemStatus === 'new') {
       return (
         <p className="new-msg">
           Must save entity at least once before previewing
@@ -109,7 +111,7 @@ export default class Main extends Component {
 
     const defaultLang = useDefaultLang
       ? `${plugin.site.attributes.locales[0]}`
-      : "";
+      : '';
     let multiLang = false;
 
     if (plugin.site.attributes.locales.length > 1) {
@@ -117,11 +119,11 @@ export default class Main extends Component {
     }
 
     const path = this.getEntityPath();
-    const noSlashInstanceUrl = instanceUrl.replace(/\/$/, "");
+    const noSlashInstanceUrl = instanceUrl.replace(/\/$/, '');
 
     const previewHref = `${noSlashInstanceUrl}${previewPath}/${
       multiLang ? `${locale}` : defaultLang
-    }${path}?${previewSecret ? `secret=${previewSecret}` : ""}`;
+    }${path}?${previewSecret ? `secret=${previewSecret}` : ''}`;
     const liveHref = `${noSlashInstanceUrl}/${
       multiLang ? `${locale}` : defaultLang
     }${path}`;
@@ -136,7 +138,7 @@ export default class Main extends Component {
             target="_blank"
             rel="noopener noreferrer"
             href={previewHref}
-            style={{ backgroundColor: "#472365" }}
+            style={{ backgroundColor: '#472365' }}
           >
             Enable preview mode
           </a>
@@ -145,7 +147,7 @@ export default class Main extends Component {
             target="_blank"
             rel="noopener noreferrer"
             href={disableHref}
-            style={{ backgroundColor: "#354008" }}
+            style={{ backgroundColor: '#354008' }}
           >
             Disable preview mode
           </a>
@@ -154,7 +156,7 @@ export default class Main extends Component {
             target="_blank"
             rel="noopener noreferrer"
             href={liveHref}
-            style={{ borderColor: accentColor, color: "A38018" }}
+            style={{ borderColor: accentColor, color: 'A38018' }}
           >
             View
           </a>
